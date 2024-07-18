@@ -1,20 +1,17 @@
-function sendScores() {
-
+function Subjects() {
   var num_drill_q = 2; // third edit num of each parts questions
-  var num_homework_q = 4;
+  var num_homework_q = 2;
   var num_quize_q = 1;
-  var num_class_q = 10;
+  var num_class_q = 8;
 
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet1 = ss.getSheetByName('Student. Info.'); 
-  var sheet2 = ss.getSheetByName('Induc.');  // first edit subject here
+  var sheet2 = ss.getSheetByName('Tree.');  // first edit subject here
   var data1 = sheet1.getDataRange().getValues();
   var data2 = sheet2.getDataRange().getValues();
-  var unit = ' استقرا' ; // Second. edit subject persian name here, dont forget space after name of unit
+  var unit = ' درخت' ; // Second. edit subject persian name here, dont forget space after name of unit
   var subject = '  نمرات' + unit + ' درس ریاضیات گسسته'
 
-  
-  
   for (var i = 1; i < data1.length; i++) {
     var oskol = 1;
     var email = data1[i][0];
@@ -186,15 +183,15 @@ function sendScores() {
   'شما به شرح زیر است:\n\n' + scores + 
   'در صورت وجود هرگونه ابهام، با ایمیل دستیار آموزشی مربوط به هر تمرین که در سربرگ تمرین مندرج است، در ارتباط باشید.\n'+
    '\nبا آرزوی بهترین ها برای شما ,\nتیم دستیاران آموزشی درس ریاضیات گسسته';
-    
-    if (oskol == 0){
-      //console.log(message)
 
-      MailApp.sendEmail(email, subject, message);
+    if (oskol == 0){
+      console.log(message);
+      //MailApp.sendEmail(email, subject, message);
     }
     
 
   }
+
   // var message = 'نمرات مبحث' + unit + ' ' +
   // 'شما به شرح زیر است:\n\n' + scores + 
   // 'در صورت وجود هرگونه ابهام، با ایمیل دستیار آموزشی مربوط به هر تمرین که در سربرگ تمرین مندرج است، در ارتباط باشید.\n'+

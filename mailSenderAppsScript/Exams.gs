@@ -1,15 +1,15 @@
-function myFunction() {
-  var num_questions = 6; // third edit num of each parts questions
+function Exams() {
+  var num_questions = 7; // third edit num of each parts questions
 
 var ss = SpreadsheetApp.getActiveSpreadsheet();
 var sheet1 = ss.getSheetByName('Student. Info.'); 
-var sheet2 = ss.getSheetByName('Midterm.');  // first edit subject here
+var sheet2 = ss.getSheetByName('Final.');  // first edit subject here
 var data1 = sheet1.getDataRange().getValues();
 var data2 = sheet2.getDataRange().getValues();
-var unit = 'میانترم' ; // Second. edit subject persian name here, dont forget space after name of unit
-var subject = 'نمرات بازبینی شده آزمون ' + unit + ' درس ریاضیات گسسته'
+var unit = 'پایانترم' ; // Second. edit subject persian name here, dont forget space after name of unit
+var subject = 'نمرات اصلاح شده آزمون ' + unit + ' درس ریاضیات گسسته'
 var correctors = [ "" , "" ] 
-var baroms = ["10" , "10" , "20" , "30" , "15" , "15"]
+var baroms = ["10" , "15" , "15" , "15" , "15" , "20" , "20"]
 
 for (var i = 1; i < data1.length; i++) {
   var oskol = 0 ;
@@ -37,7 +37,7 @@ for (var i = 1; i < data1.length; i++) {
           //scores += "توضیحات: " + data2[j+1][q + 3] + '\n\n';
         }
         else{
-          scores += 'عدم شرکت.' + '\n\n';
+          scores += '0' + '\n\n';
         }
         num_q += 1
       }
@@ -56,12 +56,12 @@ for (var i = 1; i < data1.length; i++) {
 
           var message = 'نمرات ' + unit + ' ' +
 'شما به شرح زیر است:\n\n' + scores + 
-'در صورت وجود هرگونه ابهام، در زمان تعیین شده برای بازبینی برگه‌ خود حضور پیدا کنید.\n' + 
+//'در صورت وجود هرگونه ابهام، در زمان تعیین شده برای بازبینی برگه‌ خود حضور پیدا کنید.\n' + 
   '\nبا آرزوی بهترین ها برای شما ،\nتیم دستیاران آموزشی درس ریاضیات گسسته';
-
+  console.log(message)
   if(oskol == 0){
-    //console.log(message)
-    MailApp.sendEmail(email, subject, message);
+    console.log(message)
+    //MailApp.sendEmail(email, subject, message);
   }
 
 }
